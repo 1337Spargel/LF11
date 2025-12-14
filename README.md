@@ -47,13 +47,13 @@ Ziel ist die Entwicklung eines einfachen, übersichtlichen und sicheren Arbeitsp
 * noch nicht entschieden
 ---
 
-##  Systemarchitektur (vereinfacht)
+##  Systemarchitektur 
 
-
+* noch nicht entschieden
 ---
 
 
-## 📈 Erweiterungsmöglichkeiten
+## Erweiterungsmöglichkeiten
 
 * Kalenderansicht
 * E-Mail-Benachrichtigungen
