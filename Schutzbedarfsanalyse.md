@@ -53,65 +53,139 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 
 ---
 
-## 4. Schutzbedarfsfeststellung
+## 3. Schutzbedarfsbewertung der Schutzobjekte
 
-Die Schutzbedarfsfeststellung erfolgt getrennt nach den Grundwerten Vertraulichkeit, Integrität und Verfügbarkeit.
+### 3.1 Informationen
 
-### 4.1 Vertraulichkeit
+#### 3.1.1 Benutzerkonten  
+*(Name, E-Mail-Adresse, Login-Daten)*
 
-**Schutzbedarf: Mittel**
+- **Vertraulichkeit: Sehr hoch**  
+  Benutzerkonten enthalten Authentifizierungsdaten. Ein unbefugter Zugriff ermöglicht Identitätsmissbrauch und potenziell den vollständigen Zugriff auf das System.
 
-#### Begründung:
+- **Integrität: Hoch**  
+  Manipulationen an Benutzerkonten (z. B. Rollenänderungen) können unbefugte Administrationsrechte ermöglichen.
 
-* Verarbeitung personenbezogener Daten (Name, E-Mail-Adresse)
-* Rückschlüsse auf Anwesenheitszeiten von Mitarbeitenden möglich
-* Missbrauch könnte zu Datenschutzverstößen führen
-
-Ein sehr hoher Schutzbedarf liegt nicht vor, da keine besonders sensiblen Daten (z. B. Gesundheits- oder Finanzdaten) verarbeitet werden.
-
----
-
-### 4.2 Integrität
-
-**Schutzbedarf: Hoch**
-
-#### Begründung:
-
-* Manipulation von Buchungsdaten kann zu Doppelbuchungen führen
-* Falsche oder manipulierte Daten beeinträchtigen den Betriebsablauf
-* Vertrauensverlust der Nutzer bei fehlerhaften Buchungen
-
-Die Korrektheit der Daten ist essenziell für die Funktionsfähigkeit des Systems.
+- **Verfügbarkeit: Mittel**  
+  Kurzfristige Ausfälle einzelner Benutzerkonten sind tolerierbar, beeinträchtigen jedoch die Nutzbarkeit.
 
 ---
 
-### 4.3 Verfügbarkeit
+#### 3.1.2 Buchungsdaten  
+*(Datum, Arbeitsplatz, Benutzerzuordnung)*
 
-**Schutzbedarf: Hoch**
+- **Vertraulichkeit: Mittel**  
+  Buchungsdaten ermöglichen Rückschlüsse auf Anwesenheitszeiten von Mitarbeitenden, gelten jedoch nicht als hochsensible Daten.
 
-#### Begründung:
+- **Integrität: Sehr hoch**  
+  Die Korrektheit der Buchungsdaten ist geschäftskritisch. Manipulationen führen zu Doppelbuchungen, Fehlbelegungen und organisatorischem Chaos.
 
-* Ausfall des Systems verhindert Arbeitsplatzbuchungen
-* Kurzfristige Planungen sind ohne System nicht möglich
-* Manuelle Ersatzprozesse sind nur eingeschränkt praktikabel
-
-Ein längerer Ausfall würde den Arbeitsbetrieb deutlich beeinträchtigen.
+- **Verfügbarkeit: Hoch**  
+  Ohne verfügbare Buchungsdaten ist eine Arbeitsplatzplanung nicht möglich.
 
 ---
+
+#### 3.1.3 Administrationsdaten
+
+- **Vertraulichkeit: Sehr hoch**  
+  Administrationsdaten ermöglichen vollständige Kontrolle über das System. Ein Abfluss hätte gravierende sicherheitsrelevante Folgen.
+
+- **Integrität: Sehr hoch**  
+  Veränderungen an Administrationsdaten können das System vollständig kompromittieren.
+
+- **Verfügbarkeit: Mittel**  
+  Kurzfristige Nichtverfügbarkeit ist tolerierbar, längere Ausfälle erschweren jedoch den Betrieb erheblich.
+
+---
+
+### 3.2 Anwendungen
+
+#### 3.2.1 Webanwendung (Frontend)
+
+- **Vertraulichkeit: Mittel**  
+  Das Frontend stellt personenbezogene Daten dar und verarbeitet Benutzereingaben.
+
+- **Integrität: Hoch**  
+  Manipulationen können zu fehlerhaften Buchungen oder Sicherheitslücken führen.
+
+- **Verfügbarkeit: Hoch**  
+  Bei Ausfall der Webanwendung ist keine Nutzung des Systems möglich.
+
+---
+
+#### 3.2.2 Serveranwendung (Backend)
+
+- **Vertraulichkeit: Sehr hoch**  
+  Das Backend verarbeitet sämtliche sensiblen Daten und Geschäftslogik. Ein Zugriff bedeutet vollständige Kompromittierung.
+
+- **Integrität: Sehr hoch**  
+  Manipulationen an der Backend-Logik führen zu falschen Buchungen, Sicherheitslücken oder Datenverlust.
+
+- **Verfügbarkeit: Sehr hoch**  
+  Ein Ausfall des Backends legt das gesamte System vollständig lahm.
+
+---
+
+### 3.3 IT-Systeme
+
+#### 3.3.1 Webserver
+
+- **Vertraulichkeit: Mittel**  
+  Der Webserver enthält Konfigurationsdaten und Logdateien.
+
+- **Integrität: Hoch**  
+  Manipulationen können Schadcode einschleusen oder den Server kompromittieren.
+
+- **Verfügbarkeit: Hoch**  
+  Der Webserver ist für den Betrieb der Anwendung zwingend erforderlich.
+
+---
+
+#### 3.3.2 Datenbankserver
+
+- **Vertraulichkeit: Sehr hoch**  
+  Die Datenbank enthält sämtliche personenbezogenen und organisatorischen Daten.
+
+- **Integrität: Sehr hoch**  
+  Datenmanipulation oder -verlust gefährdet die Zuverlässigkeit und Korrektheit des Systems massiv.
+
+- **Verfügbarkeit: Sehr hoch**  
+  Ohne Datenbank ist das System nicht funktionsfähig.
+
+---
+
+### 3.4 Kommunikationsverbindungen
+
+#### 3.4.1 Datenübertragung zwischen Client und Server (HTTPS)
+
+- **Vertraulichkeit: Sehr hoch**  
+  Während der Übertragung werden Login- und Buchungsdaten übertragen, deren Abhören zu schweren Datenschutzverletzungen führt.
+
+- **Integrität: Sehr hoch**  
+  Manipulierte Übertragungen können zu unbefugten Aktionen oder falschen Buchungen führen.
+
+- **Verfügbarkeit: Mittel**  
+  Kurzfristige Verbindungsstörungen sind tolerierbar, längere Ausfälle verhindern die Nutzung des Systems.
+
+---
+
 
 ## 5. Zusammenfassende Schutzbedarfsübersicht
 
-| Schutzobjekt  | Vertraulichkeit | Integrität | Verfügbarkeit |
-| ------------- | --------------- | ---------- | ------------- |
-| Benutzerdaten | Mittel          | Hoch       | Mittel        |
-| Buchungsdaten | Mittel          | Hoch       | Hoch          |
-| Webanwendung  | Mittel          | Hoch       | Hoch          |
-| Datenbank     | Mittel          | Hoch       | Hoch          |
-| Gesamtsystem  | **Mittel**      | **Hoch**   | **Hoch**      |
+| Schutzobjekt            | Vertraulichkeit | Integrität | Verfügbarkeit |
+|-------------------------|-----------------|------------|---------------|
+| Benutzerkonten          | Sehr hoch       | Hoch       | Mittel        |
+| Buchungsdaten           | Mittel          | Sehr hoch  | Hoch          |
+| Administrationsdaten    | Sehr hoch       | Sehr hoch  | Mittel        |
+| Webanwendung (Frontend) | Mittel          | Hoch       | Hoch          |
+| Serveranwendung (Backend)| Sehr hoch      | Sehr hoch  | Sehr hoch     |
+| Webserver               | Mittel          | Hoch       | Hoch          |
+| Datenbankserver         | Sehr hoch       | Sehr hoch  | Sehr hoch     |
+| Kommunikation (HTTPS)   | Sehr hoch       | Sehr hoch  | Mittel        |
+
 
 Der Gesamtschutzbedarf des Systems ergibt sich aus dem jeweils höchsten Schutzbedarf der betrachteten Schutzobjekte.
 
----
 
 ## 6. Schadensszenarien
 
@@ -155,8 +229,4 @@ Der Gesamtschutzbedarf des Systems ergibt sich aus dem jeweils höchsten Schutzb
 
 ---
 
-## 8. Fazit
 
-Das Arbeitsplatzbuchungstool weist insgesamt einen **mittleren Schutzbedarf hinsichtlich Vertraulichkeit** sowie einen **hohen Schutzbedarf hinsichtlich Integrität und Verfügbarkeit** auf.
-
-Auf Basis dieser Schutzbedarfsanalyse können im nächsten Schritt geeignete technische und organisatorische Maßnahmen nach dem BSI IT-Grundschutz abgeleitet werden.
