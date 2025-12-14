@@ -53,11 +53,11 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 
 ---
 
-## 3. Schutzbedarfsbewertung der Schutzobjekte
+## 4. Schutzbedarfsbewertung der Schutzobjekte
 
-### 3.1 Informationen
+### 4.1 Informationen
 
-#### 3.1.1 Benutzerkonten  
+#### 4.1.1 Benutzerkonten  
 *(Name, E-Mail-Adresse, Login-Daten)*
 
 - **Vertraulichkeit: Sehr hoch**  
@@ -71,7 +71,7 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 
 ---
 
-#### 3.1.2 Buchungsdaten  
+#### 4.1.2 Buchungsdaten  
 *(Datum, Arbeitsplatz, Benutzerzuordnung)*
 
 - **Vertraulichkeit: Mittel**  
@@ -81,26 +81,26 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
   Die Korrektheit der Buchungsdaten ist geschäftskritisch. Manipulationen führen zu Doppelbuchungen, Fehlbelegungen und organisatorischem Chaos.
 
 - **Verfügbarkeit: Hoch**  
-  Ohne verfügbare Buchungsdaten ist eine Arbeitsplatzplanung nicht möglich.
+  Ohne verfügbare Buchungsdaten ist eine Arbeitsplatzplanung erschwert.
 
 ---
 
-#### 3.1.3 Administrationsdaten
+#### 4.1.3 Administrationsdaten
 
 - **Vertraulichkeit: Sehr hoch**  
-  Administrationsdaten ermöglichen vollständige Kontrolle über das System. Ein Abfluss hätte gravierende sicherheitsrelevante Folgen.
+  Administrationsdaten ermöglichen Kontrolle über das System. Ein Abfluss hätte gravierende sicherheitsrelevante Folgen.
 
 - **Integrität: Sehr hoch**  
-  Veränderungen an Administrationsdaten können das System vollständig kompromittieren.
+  Veränderungen an Administrationsdaten können das System verändern.
 
 - **Verfügbarkeit: Mittel**  
   Kurzfristige Nichtverfügbarkeit ist tolerierbar, längere Ausfälle erschweren jedoch den Betrieb erheblich.
 
 ---
 
-### 3.2 Anwendungen
+### 4.2 Anwendungen
 
-#### 3.2.1 Webanwendung (Frontend)
+#### 4.2.1 Webanwendung 
 
 - **Vertraulichkeit: Mittel**  
   Das Frontend stellt personenbezogene Daten dar und verarbeitet Benutzereingaben.
@@ -113,22 +113,22 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 
 ---
 
-#### 3.2.2 Serveranwendung (Backend)
+#### 4.2.2 Serveranwendung 
 
 - **Vertraulichkeit: Sehr hoch**  
-  Das Backend verarbeitet sämtliche sensiblen Daten und Geschäftslogik. Ein Zugriff bedeutet vollständige Kompromittierung.
+  Das Backend verarbeitet  sensiblen Daten und Geschäftslogik. Ein Zugriff bedeutet Sicherheitsrisiken.
 
 - **Integrität: Sehr hoch**  
   Manipulationen an der Backend-Logik führen zu falschen Buchungen, Sicherheitslücken oder Datenverlust.
 
 - **Verfügbarkeit: Sehr hoch**  
-  Ein Ausfall des Backends legt das gesamte System vollständig lahm.
+  Ein Ausfall des Backends legt die Anwendung still.
 
 ---
 
-### 3.3 IT-Systeme
+### 4.3 IT-Systeme
 
-#### 3.3.1 Webserver
+#### 4.3.1 Webserver
 
 - **Vertraulichkeit: Mittel**  
   Der Webserver enthält Konfigurationsdaten und Logdateien.
@@ -141,10 +141,10 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 
 ---
 
-#### 3.3.2 Datenbankserver
+#### 4.3.2 Datenbankserver
 
 - **Vertraulichkeit: Sehr hoch**  
-  Die Datenbank enthält sämtliche personenbezogenen und organisatorischen Daten.
+  Die Datenbank enthält personenbezogenen und organisatorischen Daten.
 
 - **Integrität: Sehr hoch**  
   Datenmanipulation oder -verlust gefährdet die Zuverlässigkeit und Korrektheit des Systems massiv.
@@ -154,9 +154,9 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 
 ---
 
-### 3.4 Kommunikationsverbindungen
+### 4.4 Kommunikationsverbindungen
 
-#### 3.4.1 Datenübertragung zwischen Client und Server (HTTPS)
+#### 4.4.1 Datenübertragung zwischen Client und Server 
 
 - **Vertraulichkeit: Sehr hoch**  
   Während der Übertragung werden Login- und Buchungsdaten übertragen, deren Abhören zu schweren Datenschutzverletzungen führt.
