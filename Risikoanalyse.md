@@ -72,12 +72,12 @@ Die Bewertung der Risiken erfolgt qualitativ anhand der Faktoren Eintrittswahrsc
 
 ## 3. Gesamteinschätzung und Restrisikobewertung
 
-Die Risikoanalyse zeigt, dass die Mehrheit der potenziellen Gefährdungen durch die konsequente Umsetzung der **BSI-Grundschutz-Standardmaßnahmen** (Bausteine APP, INF, SYS) auf ein akzeptables Maß reduziert werden kann.
+Die Risikoanalyse zeigt, dass die Mehrheit der potenziellen Gefährdungen durch die konsequente Umsetzung der BSI-Grundschutz-Standardmaßnahmen (Bausteine APP, INF, SYS) auf ein akzeptables Maß reduziert werden kann.
 
-Besonderes Augenmerk liegt auf dem **Administrationsbereich**. Durch die Kombination aus technischer Protokollierung und organisatorischer Trennung der Rollen wird das verbleibende Restrisiko als **vertretbar** eingestuft. Da das System intern genutzt wird und keine geschäftskritischen Transaktionen (z. B. Zahlungsverkehr) abwickelt, sind keine darüber hinausgehenden Hochsicherheitsmaßnahmen erforderlich.
+Besonderes Augenmerk liegt auf dem Administrationsbereich. Durch die Kombination aus technischer Protokollierung und organisatorischer Trennung der Rollen wird das verbleibende Restrisiko als vertretbar eingestuft. Da das System intern genutzt wird und keine geschäftskritischen Transaktionen (z. B. Zahlungsverkehr) abwickelt, sind keine darüber hinausgehenden Hochsicherheitsmaßnahmen erforderlich.
 
 ## 4. Fazit
 
-Das Arbeitsplatzbuchungstool weist ein **ausgewogenes Risikoprofil** auf. Die identifizierten Risiken sind mit gängigen IT-Sicherheitspraktiken beherrschbar. Unter der Voraussetzung, dass die empfohlenen Behandlungsmaßnahmen (insb. Backup, Verschlüsselung und Rollenkonzept) umgesetzt werden, bestehen keine Einwände gegen den produktiven Betrieb des Systems.
+Das Arbeitsplatzbuchungstool weist ein ausgewogenes Risikoprofil auf. Die identifizierten Risiken sind mit gängigen IT-Sicherheitspraktiken beherrschbar. Unter der Voraussetzung, dass die empfohlenen Behandlungsmaßnahmen (insb. Backup, Verschlüsselung und Rollenkonzept) umgesetzt werden, bestehen keine Einwände gegen den produktiven Betrieb des Systems.
 
 ---
