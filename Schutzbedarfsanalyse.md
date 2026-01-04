@@ -66,7 +66,7 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 - **Integrität: Hoch**  
   Manipulationen an Benutzerkonten (z. B. Rollenänderungen) können unbefugte Administrationsrechte ermöglichen.
 
-- **Verfügbarkeit: Mittel**  
+- **Verfügbarkeit: Normal**  
   Kurzfristige Ausfälle einzelner Benutzerkonten sind tolerierbar, beeinträchtigen jedoch die Nutzbarkeit.
 
 ---
@@ -74,7 +74,7 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 #### 4.1.2 Buchungsdaten  
 *(Datum, Arbeitsplatz, Benutzerzuordnung)*
 
-- **Vertraulichkeit: Mittel**  
+- **Vertraulichkeit: Normal**  
   Buchungsdaten ermöglichen Rückschlüsse auf Anwesenheitszeiten von Mitarbeitenden, gelten jedoch nicht als hochsensible Daten.
 
 - **Integrität: Sehr hoch**  
@@ -93,7 +93,7 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 - **Integrität: Sehr hoch**  
   Veränderungen an Administrationsdaten können das System verändern.
 
-- **Verfügbarkeit: Mittel**  
+- **Verfügbarkeit: Normal**  
   Kurzfristige Nichtverfügbarkeit ist tolerierbar, längere Ausfälle erschweren jedoch den Betrieb erheblich.
 
 ---
@@ -102,7 +102,7 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 
 #### 4.2.1 Webanwendung 
 
-- **Vertraulichkeit: Mittel**  
+- **Vertraulichkeit: Normal**  
   Das Frontend stellt personenbezogene Daten dar und verarbeitet Benutzereingaben.
 
 - **Integrität: Hoch**  
@@ -164,7 +164,7 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 - **Integrität: Sehr hoch**  
   Manipulierte Übertragungen können zu unbefugten Aktionen oder falschen Buchungen führen.
 
-- **Verfügbarkeit: Mittel**  
+- **Verfügbarkeit: Normal**  
   Kurzfristige Verbindungsstörungen sind tolerierbar, längere Ausfälle verhindern die Nutzung des Systems.
 
 ---
