@@ -60,14 +60,14 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 #### 4.1.1 Benutzerkonten  
 *(Name, E-Mail-Adresse, Login-Daten)*
 
-- **Vertraulichkeit: Sehr hoch**  
-  Benutzerkonten enthalten Authentifizierungsdaten. Ein unbefugter Zugriff ermöglicht Identitätsmissbrauch und potenziell den vollständigen Zugriff auf das System.
+- **Vertraulichkeit:  Hoch**  
+  Benutzerkonten enthalten personenbezogene Daten sowie Zugangsinformationen. Ein unbefugter Zugriff kann zu Missbrauch einzelner Nutzerkonten und unberechtigten Buchungen führen.
 
 - **Integrität: Hoch**  
-  Manipulationen an Benutzerkonten (z. B. Rollenänderungen) können unbefugte Administrationsrechte ermöglichen.
+  Veränderungen an Benutzerkonten (z. B. Rollen oder Zuordnungen) können die ordnungsgemäße Nutzung des Systems beeinträchtigen.
 
 - **Verfügbarkeit: Normal**  
-  Kurzfristige Ausfälle einzelner Benutzerkonten sind tolerierbar, beeinträchtigen jedoch die Nutzbarkeit.
+  Der temporäre Ausfall einzelner Benutzerkonten ist organisatorisch handhabbar.
 
 ---
 
@@ -77,8 +77,8 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 - **Vertraulichkeit: Normal**  
   Buchungsdaten ermöglichen Rückschlüsse auf Anwesenheitszeiten von Mitarbeitenden, gelten jedoch nicht als hochsensible Daten.
 
-- **Integrität: Sehr hoch**  
-  Die Korrektheit der Buchungsdaten ist geschäftskritisch. Manipulationen führen zu Doppelbuchungen, Fehlbelegungen und organisatorischem Chaos.
+- **Integrität: Hoch**  
+  Fehlerhafte oder manipulierte Buchungsdaten können zu Fehlbelegungen und organisatorischen Problemen führen.
 
 - **Verfügbarkeit: Hoch**  
   Ohne verfügbare Buchungsdaten ist eine Arbeitsplatzplanung erschwert.
@@ -88,13 +88,13 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 #### 4.1.3 Administrationsdaten
 
 - **Vertraulichkeit: Sehr hoch**  
-  Administrationsdaten ermöglichen Kontrolle über das System. Ein Abfluss hätte gravierende sicherheitsrelevante Folgen.
+  Administrationsdaten ermöglichen Änderungen an Systemkonfigurationen und Nutzerrechten.
 
 - **Integrität: Sehr hoch**  
-  Veränderungen an Administrationsdaten können das System verändern.
+  Unbefugte Änderungen können die korrekte Funktionsweise des Systems beeinträchtigen.
 
 - **Verfügbarkeit: Normal**  
-  Kurzfristige Nichtverfügbarkeit ist tolerierbar, längere Ausfälle erschweren jedoch den Betrieb erheblich.
+  Kurzfristige Einschränkungen sind organisatorisch überbrückbar.
 
 ---
 
@@ -115,14 +115,14 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 
 #### 4.2.2 Serveranwendung 
 
-- **Vertraulichkeit: Sehr hoch**  
-  Das Backend verarbeitet  sensiblen Daten und Geschäftslogik. Ein Zugriff bedeutet Sicherheitsrisiken.
+- **Vertraulichkeit: Hoch**  
+  Das Backend verarbeitet zentrale Anwendungslogik und Zugriff auf gespeicherte Daten.
 
 - **Integrität: Sehr hoch**  
-  Manipulationen an der Backend-Logik führen zu falschen Buchungen, Sicherheitslücken oder Datenverlust.
+  Fehler oder Manipulationen wirken sich direkt auf Buchungen und Systemverhalten aus.
 
-- **Verfügbarkeit: Sehr hoch**  
-  Ein Ausfall des Backends legt die Anwendung still.
+- **Verfügbarkeit: Hoch**  
+  Ein Ausfall führt zu einer temporären Nichtnutzbarkeit des Systems.
 
 ---
 
@@ -130,7 +130,7 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 
 #### 4.3.1 Webserver
 
-- **Vertraulichkeit: Mittel**  
+- **Vertraulichkeit: Normal**  
   Der Webserver enthält Konfigurationsdaten und Logdateien.
 
 - **Integrität: Hoch**  
@@ -143,14 +143,14 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 
 #### 4.3.2 Datenbankserver
 
-- **Vertraulichkeit: Sehr hoch**  
-  Die Datenbank enthält personenbezogenen und organisatorischen Daten.
+- **Vertraulichkeit: Hoch**  
+  Speicherung personenbezogener und organisatorischer Daten.
 
 - **Integrität: Sehr hoch**  
-  Datenmanipulation oder -verlust gefährdet die Zuverlässigkeit und Korrektheit des Systems massiv.
+  Datenverluste oder inkonsistente Daten beeinträchtigen die Zuverlässigkeit des Systems erheblich.
 
-- **Verfügbarkeit: Sehr hoch**  
-  Ohne Datenbank ist das System nicht funktionsfähig.
+- **Verfügbarkeit: Hoch**  
+  Ohne Datenbank ist der Betrieb eingeschränkt möglich.
 
 ---
 
@@ -158,14 +158,14 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 
 #### 4.4.1 Datenübertragung zwischen Client und Server 
 
-- **Vertraulichkeit: Sehr hoch**  
-  Während der Übertragung werden Login- und Buchungsdaten übertragen, deren Abhören zu schweren Datenschutzverletzungen führt.
+- **Vertraulichkeit: Hoch**  
+Während der Übertragung werden Anmelde- und Buchungsdaten verarbeitet.
 
-- **Integrität: Sehr hoch**  
-  Manipulierte Übertragungen können zu unbefugten Aktionen oder falschen Buchungen führen.
+- **Integrität: Hoch**  
+  Manipulationen könnten zu fehlerhaften Buchungen führen.
 
 - **Verfügbarkeit: Normal**  
-  Kurzfristige Verbindungsstörungen sind tolerierbar, längere Ausfälle verhindern die Nutzung des Systems.
+ Kurzfristige Störungen sind tolerierbar.
 
 ---
 
@@ -174,14 +174,14 @@ Im Rahmen der Schutzbedarfsanalyse werden folgende Schutzobjekte betrachtet:
 
 | Schutzobjekt            | Vertraulichkeit | Integrität | Verfügbarkeit |
 |-------------------------|-----------------|------------|---------------|
-| Benutzerkonten          | Sehr hoch       | Hoch       | Mittel        |
-| Buchungsdaten           | Mittel          | Sehr hoch  | Hoch          |
-| Administrationsdaten    | Sehr hoch       | Sehr hoch  | Mittel        |
-| Webanwendung (Frontend) | Mittel          | Hoch       | Hoch          |
-| Serveranwendung (Backend)| Sehr hoch      | Sehr hoch  | Sehr hoch     |
-| Webserver               | Mittel          | Hoch       | Hoch          |
-| Datenbankserver         | Sehr hoch       | Sehr hoch  | Sehr hoch     |
-| Kommunikation (HTTPS)   | Sehr hoch       | Sehr hoch  | Mittel        |
+| Benutzerkonten          | Hoch            | Hoch       | Normal        |
+| Buchungsdaten           | Normal          | Hoch       | Hoch          |
+| Administrationsdaten    | Sehr hoch       | Sehr hoch  | Normal        |
+| Webanwendung (Frontend) | Normal          | Hoch       | Hoch          |
+| Serveranwendung (Backend)| Hoch           | Hoch       | Hoch          |
+| Webserver               | Normal          | Hoch       | Hoch          |
+| Datenbankserver         | Hoch            | Sehr hoch  | Hoch          |
+| Kommunikation (HTTPS)   | Hoch            | Hoch       | Normal        |
 
 
 Der Gesamtschutzbedarf des Systems ergibt sich aus dem jeweils höchsten Schutzbedarf der betrachteten Schutzobjekte.
