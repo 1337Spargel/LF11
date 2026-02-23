@@ -1,6 +1,8 @@
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 import BuildingsPage from "./pages/BuildingsPage.jsx";
+import FloorsPage from "./pages/FloorsPage.jsx";
+import RoomsPage from "./pages/RoomsPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 
@@ -29,11 +31,11 @@ function Header() {
             boxShadow: "0 2px 12px rgba(0,0,0,0.3)",
         }}>
             <span style={{ color: "#e0e0e0", fontWeight: 700, fontSize: 17, letterSpacing: "0.01em" }}>
-                🏢 Bürobuchungssystem
+                🏢 Office Booking System
             </span>
             <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
                 <span style={{ color: "#aaa", fontSize: 14 }}>
-                    Hallo, <strong style={{ color: "#c0c0c0" }}>{user?.name}</strong>
+                    Hello, <strong style={{ color: "#c0c0c0" }}>{user?.name}</strong>
                 </span>
                 <button
                     onClick={handleLogout}
@@ -56,7 +58,7 @@ function Header() {
                         e.currentTarget.style.color = "#4f8ef7";
                     }}
                 >
-                    Abmelden
+                    Logout
                 </button>
             </div>
         </div>
@@ -75,6 +77,16 @@ export default function App() {
                 <Route path="/" element={
                     <ProtectedRoute>
                         <BuildingsPage />
+                    </ProtectedRoute>
+                } />
+                <Route path="/building/:buildingId" element={
+                    <ProtectedRoute>
+                        <FloorsPage />
+                    </ProtectedRoute>
+                } />
+                <Route path="/building/:buildingId/floor/:floorId" element={
+                    <ProtectedRoute>
+                        <RoomsPage />
                     </ProtectedRoute>
                 } />
             </Routes>

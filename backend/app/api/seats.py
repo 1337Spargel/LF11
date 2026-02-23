@@ -30,7 +30,7 @@ def get_seats(room_id: int | None = None, db: Session = Depends(get_db)):
 def get_seat(seat_id: int, db: Session = Depends(get_db)):
     seat = db.query(Seat).filter(Seat.id == seat_id).first()
     if not seat:
-        raise HTTPException(status_code=404, detail="Sitzplatz nicht gefunden")
+        raise HTTPException(status_code=404, detail="Seat not found")
     return seat
 
 @router.post("/", response_model=SeatOut, status_code=201)
@@ -45,6 +45,6 @@ def create_seat(data: SeatCreate, db: Session = Depends(get_db)):
 def delete_seat(seat_id: int, db: Session = Depends(get_db)):
     seat = db.query(Seat).filter(Seat.id == seat_id).first()
     if not seat:
-        raise HTTPException(status_code=404, detail="Sitzplatz nicht gefunden")
+        raise HTTPException(status_code=404, detail="Seat not found")
     db.delete(seat)
     db.commit()

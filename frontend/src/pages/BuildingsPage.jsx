@@ -1,8 +1,20 @@
-import buildingImg from "../assets/building.png";
+import { useNavigate } from "react-router-dom";
+import building1Img from "../assets/Building1.jpeg";
+import building2Img from "../assets/Building2.jpeg";
 
 const buildings = [
-    { id: "b1", name: "Gebäude A", img: buildingImg },
-    { id: "b2", name: "Gebäude B", img: buildingImg },
+    {
+        id: "1",
+        name: "Innovation Hub",
+        address: "Musterstraße 12, 80331 München",
+        img: building1Img,
+    },
+    {
+        id: "2",
+        name: "Tech Campus B",
+        address: "Musterallee 5, 80333 München",
+        img: building2Img,
+    },
 ];
 
 export default function BuildingsPage() {
@@ -20,10 +32,10 @@ export default function BuildingsPage() {
                     color: "#e0e0e0",
                     fontWeight: 700,
                 }}>
-                    Gebäude auswählen
+                    Select a Building
                 </h1>
                 <p style={{ color: "#888", marginTop: 8, fontSize: 14, marginBottom: 0 }}>
-                    Wähle ein Gebäude, um die verfügbaren Räume zu sehen
+                    Choose a building to view its floor plan and available rooms
                 </p>
             </div>
 
@@ -41,6 +53,8 @@ export default function BuildingsPage() {
 }
 
 function BuildingCard({ building: b }) {
+    const navigate = useNavigate();
+
     function handleMouseEnter(e) {
         e.currentTarget.style.transform = "translateY(-4px)";
         e.currentTarget.style.boxShadow = "0 12px 32px rgba(79,142,247,0.2)";
@@ -56,7 +70,7 @@ function BuildingCard({ building: b }) {
     return (
         <button
             type="button"
-            onClick={() => console.log("Geklickt:", b.id)}
+            onClick={() => navigate(`/building/${b.id}`)}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             style={{
@@ -87,7 +101,7 @@ function BuildingCard({ building: b }) {
                         {b.name}
                     </h3>
                     <div style={{ fontSize: 13, color: "#888", marginTop: 4 }}>
-                        Etagen & Räume anzeigen
+                        {b.address}
                     </div>
                 </div>
                 <span style={{ color: "#4f8ef7", fontSize: 20, lineHeight: 1 }}>→</span>

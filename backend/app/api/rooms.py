@@ -34,7 +34,7 @@ def get_rooms(floor_id: int | None = None, db: Session = Depends(get_db)):
 def get_room(room_id: int, db: Session = Depends(get_db)):
     room = db.query(Room).filter(Room.id == room_id).first()
     if not room:
-        raise HTTPException(status_code=404, detail="Raum nicht gefunden")
+        raise HTTPException(status_code=404, detail="Room not found")
     return room
 
 @router.post("/", response_model=RoomOut, status_code=201)
@@ -49,6 +49,6 @@ def create_room(data: RoomCreate, db: Session = Depends(get_db)):
 def delete_room(room_id: int, db: Session = Depends(get_db)):
     room = db.query(Room).filter(Room.id == room_id).first()
     if not room:
-        raise HTTPException(status_code=404, detail="Raum nicht gefunden")
+        raise HTTPException(status_code=404, detail="Room not found")
     db.delete(room)
     db.commit()

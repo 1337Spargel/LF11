@@ -4,23 +4,23 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.db.db import init_db
 from app.api import buildings, floors, rooms, seats, bookings, auth
 
-app = FastAPI(title="Bürobuchungssystem API", version="1.0.0")
+app = FastAPI(title="Office Booking System API", version="1.0.0")
 
-# CORS – damit das React-Frontend auf die API zugreifen kann
+# CORS – allow the React frontend to access the API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Vite Dev Server
+    allow_origins=["http://localhost:5173"],  # Vite dev server
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Datenbank beim Start initialisieren
+# Initialize database on startup
 @app.on_event("startup")
 def on_startup():
     init_db()
 
-# Router einbinden
+# Include routers
 app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
 app.include_router(buildings.router, prefix="/api/buildings", tags=["Buildings"])
 app.include_router(floors.router, prefix="/api/floors", tags=["Floors"])
@@ -30,4 +30,4 @@ app.include_router(bookings.router, prefix="/api/bookings", tags=["Bookings"])
 
 @app.get("/")
 def root():
-    return {"message": "Bürobuchungssystem API läuft!"}
+    return {"message": "Office Booking System API is running!"}

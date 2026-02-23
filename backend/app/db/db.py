@@ -1,11 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 
-DATABASE_URL = "sqlite:///./buero_buchung.db"
+DATABASE_URL = "sqlite:///./office_booking.db"
 
 engine = create_engine(
     DATABASE_URL,
-    connect_args={"check_same_thread": False}  # Nötig für SQLite mit FastAPI
+    connect_args={"check_same_thread": False}  # Required for SQLite with FastAPI
 )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -14,7 +14,7 @@ class Base(DeclarativeBase):
     pass
 
 def get_db():
-    """Dependency: Datenbankverbindung pro Request"""
+    """Dependency: Database connection per request"""
     db = SessionLocal()
     try:
         yield db
@@ -22,13 +22,13 @@ def get_db():
         db.close()
 
 def init_db():
-    """Alle Tabellen erstellen beim Start"""
+    """Create all tables on startup"""
     from app.models import building, floor, room, seat, booking, user  # noqa
     Base.metadata.create_all(bind=engine)
     _seed_data()
 
 def _seed_data():
-    """Testdaten einfügen falls DB leer"""
+    """Insert seed data if database is empty"""
     from app.models.building import Building
     from app.models.floor import Floor
     from app.models.room import Room
@@ -39,9 +39,9 @@ def _seed_data():
     db = SessionLocal()
     try:
         if db.query(Building).count() > 0:
-            return  # Bereits befüllt
+            return  # Already populated
 
-        # Test-User
+        # Test user
         test_user = User(
             name="Test User",
             email="test@example.com",
@@ -50,32 +50,32 @@ def _seed_data():
         db.add(test_user)
         db.flush()
 
-        # Gebäude
-        b1 = Building(name="Gebäude A")
-        b2 = Building(name="Gebäude B")
+        # Buildings
+        b1 = Building(name="Building A")
+        b2 = Building(name="Building B")
         db.add_all([b1, b2])
         db.flush()
 
-        # Etagen
+        # Floors
         floors = [
-            Floor(building_id=b1.id, name="Erdgeschoss", floor_number=0),
-            Floor(building_id=b1.id, name="1. Obergeschoss", floor_number=1),
-            Floor(building_id=b2.id, name="Erdgeschoss", floor_number=0),
+            Floor(building_id=b1.id, name="Ground Floor", floor_number=0),
+            Floor(building_id=b1.id, name="1st Floor", floor_number=1),
+            Floor(building_id=b2.id, name="Ground Floor", floor_number=0),
         ]
         db.add_all(floors)
         db.flush()
 
-        # Räume
+        # Rooms
         rooms = [
-            Room(floor_id=floors[0].id, name="Raum 101", room_number="101", capacity=6),
-            Room(floor_id=floors[0].id, name="Raum 102", room_number="102", capacity=4),
-            Room(floor_id=floors[1].id, name="Raum 201", room_number="201", capacity=8),
-            Room(floor_id=floors[2].id, name="Raum B-01", room_number="B01", capacity=5),
+            Room(floor_id=floors[0].id, name="Room 101", room_number="101", capacity=6),
+            Room(floor_id=floors[0].id, name="Room 102", room_number="102", capacity=4),
+            Room(floor_id=floors[1].id, name="Room 201", room_number="201", capacity=8),
+            Room(floor_id=floors[2].id, name="Room B-01", room_number="B01", capacity=5),
         ]
         db.add_all(rooms)
         db.flush()
 
-        # Sitzplätze
+        # Seats
         seats = []
         for room in rooms:
             for i in range(1, room.capacity + 1):
@@ -83,9 +83,9 @@ def _seed_data():
         db.add_all(seats)
 
         db.commit()
-        print("Testdaten erfolgreich eingefügt")
+        print("Seed data inserted successfully")
     except Exception as e:
         db.rollback()
-        print(f"Fehler beim Seeden: {e}")
+        print(f"Error during seeding: {e}")
     finally:
         db.close()

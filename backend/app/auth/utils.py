@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from app.db.db import get_db
 from app.models.user import User
 
-SECRET_KEY = "buero-buchung-secret-key-2024"
+SECRET_KEY = "office-booking-secret-key-2024"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
@@ -34,7 +34,7 @@ def create_access_token(data: dict) -> str:
 def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)) -> User:
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Ungültiger oder abgelaufener Token",
+        detail="Invalid or expired token",
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:

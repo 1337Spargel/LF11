@@ -32,7 +32,7 @@ def get_floors(building_id: int | None = None, db: Session = Depends(get_db)):
 def get_floor(floor_id: int, db: Session = Depends(get_db)):
     floor = db.query(Floor).filter(Floor.id == floor_id).first()
     if not floor:
-        raise HTTPException(status_code=404, detail="Etage nicht gefunden")
+        raise HTTPException(status_code=404, detail="Floor not found")
     return floor
 
 @router.post("/", response_model=FloorOut, status_code=201)
@@ -47,6 +47,6 @@ def create_floor(data: FloorCreate, db: Session = Depends(get_db)):
 def delete_floor(floor_id: int, db: Session = Depends(get_db)):
     floor = db.query(Floor).filter(Floor.id == floor_id).first()
     if not floor:
-        raise HTTPException(status_code=404, detail="Etage nicht gefunden")
+        raise HTTPException(status_code=404, detail="Floor not found")
     db.delete(floor)
     db.commit()
