@@ -7,7 +7,8 @@
 pip install -r requirement.txt
 
 # Server starten:
-uvicorn main:app --reload
+uvicorn main:app --reload --port 8001
+
 ```
 
 ## API Dokumentation

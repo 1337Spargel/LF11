@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.db.db import init_db
-from app.api import buildings, floors, rooms, seats, bookings
+from app.api import buildings, floors, rooms, seats, bookings, auth
 
 app = FastAPI(title="Bürobuchungssystem API", version="1.0.0")
 
@@ -21,6 +21,7 @@ def on_startup():
     init_db()
 
 # Router einbinden
+app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
 app.include_router(buildings.router, prefix="/api/buildings", tags=["Buildings"])
 app.include_router(floors.router, prefix="/api/floors", tags=["Floors"])
 app.include_router(rooms.router, prefix="/api/rooms", tags=["Rooms"])

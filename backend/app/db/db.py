@@ -33,11 +33,22 @@ def _seed_data():
     from app.models.floor import Floor
     from app.models.room import Room
     from app.models.seat import Seat
+    from app.models.user import User
+    from app.auth.utils import hash_password
 
     db = SessionLocal()
     try:
         if db.query(Building).count() > 0:
             return  # Bereits befüllt
+
+        # Test-User
+        test_user = User(
+            name="Test User",
+            email="test@example.com",
+            hashed_password=hash_password("test123"),
+        )
+        db.add(test_user)
+        db.flush()
 
         # Gebäude
         b1 = Building(name="Gebäude A")
