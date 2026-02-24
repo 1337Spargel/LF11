@@ -55,11 +55,11 @@ Das Backend wird in **Python** umgesetzt und folgt einer klaren **Schichtenarchi
 Umfasst:
 - Prüfung der Verfügbarkeit von Arbeitsplätzen
 - Regeln für Buchungen und Stornierungen
-- Kontrolle der Benutzerberechtigungen
+- Kontrolle der Benutzerberechtigungen **(rollenbasiert mittels RBAC)**
 
 ### Repository-Layer
 
-- Zugriff auf SQLite
+- Zugriff auf SQLite **über ORM bzw. parametrisierte Queries**
 - Verwaltung von Relationen
 - Verwendung von Constraints
 
@@ -83,7 +83,7 @@ Die API definiert alle Endpunkte zur Verbindung von Frontend und Backend.
 - Erstellen von Buchungen
 - Löschen von Buchungen
 
-Die Kommunikation erfolgt über **JSON**.
+Die Kommunikation erfolgt über **JSON** **und wird mittels Swagger/OpenAPI dokumentiert**.
 
 ### Vorteil
 
@@ -113,6 +113,8 @@ Gespeicherte Daten:
 - Constraints
 - Verhinderung von Doppelbuchungen
 
+**Zur Gewährleistung von Integrität und Verfügbarkeit werden regelmäßige automatisierte Backups der SQLite-Datenbank durchgeführt und Wiederherstellungstests eingeplant.**
+
 Der Repository-Layer kapselt den Datenzugriff, sodass Änderungen an der Datenbankstruktur keine Auswirkungen auf Geschäftslogik oder API haben.
 
 ---
@@ -132,14 +134,17 @@ Frontend und Backend werden zunächst **parallel entwickelt und unabhängig gete
 - Validierung des Service-Layers
 - Tests des Repository-Layers
 - Isolierte Prüfung der Geschäftslogik
+- **Überprüfung der Authentifizierungs- und Autorisierungslogik (JWT/RBAC)**
+- **Test der Audit-Logging-Funktionen**
 
 ### Integration
 
 Nach erfolgreicher Testphase:
 
 - Ersetzen der Mock-Daten durch echte API-Aufrufe
-- Aktivierung der Authentifizierung
+- Aktivierung der Authentifizierung **(JWT mit kurzer Token-Laufzeit und sicherem Passwort-Hashing)**
 - Persistente Speicherung in SQLite
+- **Ausschließliche Nutzung von HTTPS sowie HSTS zur Absicherung der Transportverbindung**
 
 ### Ziel
 
