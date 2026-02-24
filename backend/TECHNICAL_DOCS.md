@@ -81,7 +81,7 @@ backend/
 ---
 
 
-## 5. Authentifizierung
+## 4. Authentifizierung
 
 Das System verwendet **JWT (JSON Web Tokens)** mit dem HS256-Algorithmus.
 
@@ -174,38 +174,9 @@ Die interaktive API-Dokumentation ist verfügbar unter:
 { "floor_id": 1, "name": "Raum 101", "room_number": "101", "capacity": 6 }
 ```
 
-### Seats `/api/seats`
 
-| Methode | Pfad           | Query-Parameter | Beschreibung               |
-|---------|----------------|-----------------|----------------------------|
-| GET     | `/`            | `room_id`       | Sitzplätze abrufen         |
-| GET     | `/{seat_id}`   | –               | Einen Sitzplatz abrufen    |
-| POST    | `/`            | –               | Sitzplatz erstellen        |
-| DELETE  | `/{seat_id}`   | –               | Sitzplatz löschen          |
 
-**Request-Body (POST):**
-```json
-{ "room_id": 1, "seat_number": "1" }
-```
-
-### Bookings `/api/bookings`
-
-| Methode | Pfad                | Query-Parameter | Beschreibung                    |
-|---------|---------------------|-----------------|---------------------------------|
-| GET     | `/`                 | `user_id`       | Buchungen abrufen               |
-| POST    | `/`                 | –               | Buchung erstellen               |
-| DELETE  | `/{booking_id}`     | –               | Buchung stornieren (204)        |
-
-**Request-Body (POST):**
-```json
-{ "seat_id": 3, "user_id": 1, "date": "2026-03-01" }
-```
-
-**Fehler bei Doppelbuchung:** `409 Conflict`
-
----
-
-## 7. Datenbank
+## 6. Datenbank
 
 ### Verbindung
 
@@ -235,7 +206,7 @@ Jede HTTP-Anfrage erhält eine eigene Datenbank-Session über die FastAPI-Depend
 
 ---
 
-## 8. Tests
+## 7. Tests
 
 ### Ausführen
 
@@ -279,7 +250,7 @@ Unit-Tests für die reinen Hilfsfunktionen in `app/auth/utils.py` – kein HTTP,
 
 ---
 
-## 9. Server starten
+## 8. Server starten
 
 ### Voraussetzungen
 
