@@ -2,7 +2,7 @@
 
 ## Inhaltsverzeichnis
 
-1. [[#1-Überblick]]
+1. [[1. Überblick]]
 2. [Technologie-Stack](#2-technologie-stack)
 3. [Projektstruktur](#3-projektstruktur)
 4. [Authentifizierung](#5-authentifizierung)
