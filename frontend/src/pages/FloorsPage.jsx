@@ -5,9 +5,9 @@ const buildingInfo = {
         name: "Innovation Hub",
         address: "Musterstraße 12, 80331 München",
         floors: [
-            { id: "eg", label: "Erdgeschoss (EG)", rooms: 8, description: "Eingang, Lobby & Meetingräume" },
-            { id: "1", label: "1. Etage", rooms: 12, description: "Büros & Arbeitsplätze" },
-            { id: "2", label: "2. Etage", rooms: 10, description: "Konferenzräume & Teamküche" },
+            { id: "eg", label: "Erdgeschoss (EG)", rooms: 4, description: "Eingang, Lobby & Meetingräume" },
+            { id: "1", label: "1. Etage", rooms: 4, description: "Büros & Arbeitsplätze" },
+            { id: "2", label: "2. Etage", rooms: 4, description: "Konferenzräume & Teamküche" },
         ],
     },
     "2": {
