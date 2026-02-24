@@ -2,14 +2,15 @@
 
 ## Inhaltsverzeichnis
 
-1. [[1. Überblick]]
+
+1. [Überblick](#1-überblick)
 2. [Technologie-Stack](#2-technologie-stack)
 3. [Projektstruktur](#3-projektstruktur)
-4. [Authentifizierung](#5-authentifizierung)
-5. [API-Endpunkte](#6-api-endpunkte)
-6. [Datenbank](#7-datenbank)
-7. [Tests](#8-tests)
-8. [Server starten](#9-server-starten)
+4. [Authentifizierung](#4-authentifizierung)
+5. [API-Endpunkte](#5-api-endpunkte)
+6. [Datenbank](#6-datenbank)
+7. [Tests](#7-tests)
+8. [Server starten](#8-server-starten)
 
 ---
 
