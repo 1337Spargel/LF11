@@ -144,7 +144,7 @@ Nach erfolgreicher Testphase:
 - Ersetzen der Mock-Daten durch echte API-Aufrufe
 - Aktivierung der Authentifizierung **(JWT mit kurzer Token-Laufzeit und sicherem Passwort-Hashing)**
 - Persistente Speicherung in SQLite
-- **Ausschließliche Nutzung von HTTPS sowie HSTS zur Absicherung der Transportverbindung**
+- **Ausschließliche Nutzung von HTTPS zur Absicherung der Transportverbindung**
 
 ### Ziel
 
