@@ -5,12 +5,11 @@
 1. [Überblick](#1-überblick)
 2. [Technologie-Stack](#2-technologie-stack)
 3. [Projektstruktur](#3-projektstruktur)
-4. [Datenmodell](#4-datenmodell)
-5. [Authentifizierung](#5-authentifizierung)
-6. [API-Endpunkte](#6-api-endpunkte)
-7. [Datenbank](#7-datenbank)
-8. [Tests](#8-tests)
-9. [Server starten](#9-server-starten)
+4. [Authentifizierung](#5-authentifizierung)
+5. [API-Endpunkte](#6-api-endpunkte)
+6. [Datenbank](#7-datenbank)
+7. [Tests](#8-tests)
+8. [Server starten](#9-server-starten)
 
 ---
 
@@ -81,83 +80,6 @@ backend/
 
 ---
 
-## 4. Datenmodell
-
-### Beziehungsdiagramm
-
-```
-users ──────────────────────────────────────────┐
-  id, name, email, hashed_password              │
-                                                │ 1:n
-buildings                                       │
-  id, name, image_url                           │
-  │ 1:n                                         │
-floors                                          │
-  id, building_id (FK), name, floor_number      │
-  │ 1:n                                         │
-rooms                                           │
-  id, floor_id (FK), name, room_number, capacity│
-  │ 1:n                                         │
-seats                                           │
-  id, room_id (FK), seat_number                 │
-  │ 1:n                                         ▼
-bookings
-  id, seat_id (FK), user_id (FK), date
-  UNIQUE(seat_id, date)   ← verhindert Doppelbuchungen
-```
-
-### Modelle im Detail
-
-#### `users`
-| Spalte            | Typ     | Beschreibung                    |
-|-------------------|---------|---------------------------------|
-| id                | Integer | Primärschlüssel                 |
-| name              | String  | Anzeigename                     |
-| email             | String  | Eindeutig, für Login            |
-| hashed_password   | String  | bcrypt-Hash, nie Klartext       |
-
-#### `buildings`
-| Spalte    | Typ     | Beschreibung            |
-|-----------|---------|-------------------------|
-| id        | Integer | Primärschlüssel         |
-| name      | String  | Name des Gebäudes       |
-| image_url | String  | Optional, Bild-URL      |
-
-#### `floors`
-| Spalte        | Typ     | Beschreibung               |
-|---------------|---------|----------------------------|
-| id            | Integer | Primärschlüssel            |
-| building_id   | Integer | FK → buildings.id          |
-| name          | String  | z. B. "Erdgeschoss"        |
-| floor_number  | Integer | Numerischer Etagen-Index   |
-
-#### `rooms`
-| Spalte       | Typ     | Beschreibung             |
-|--------------|---------|--------------------------|
-| id           | Integer | Primärschlüssel          |
-| floor_id     | Integer | FK → floors.id           |
-| name         | String  | z. B. "Raum 101"         |
-| room_number  | String  | Raumnummer               |
-| capacity     | Integer | Anzahl Sitzplätze        |
-
-#### `seats`
-| Spalte       | Typ     | Beschreibung          |
-|--------------|---------|-----------------------|
-| id           | Integer | Primärschlüssel       |
-| room_id      | Integer | FK → rooms.id         |
-| seat_number  | String  | Platznummer im Raum   |
-
-#### `bookings`
-| Spalte   | Typ     | Beschreibung                         |
-|----------|---------|--------------------------------------|
-| id       | Integer | Primärschlüssel                      |
-| seat_id  | Integer | FK → seats.id                        |
-| user_id  | Integer | FK → users.id                        |
-| date     | Date    | Buchungsdatum (ISO 8601)             |
-
-> **Constraint:** `UNIQUE(seat_id, date)` – Ein Sitzplatz kann pro Tag nur einmal gebucht werden.
-
----
 
 ## 5. Authentifizierung
 
